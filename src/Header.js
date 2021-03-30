@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
 
 function Header() {
   return (
@@ -9,10 +10,15 @@ function Header() {
       <HeaderLogo>
         <img src={"https://i.imgur.com/7I9Was5.png"} />
       </HeaderLogo>
+
       <HeaderOptionAddress>
-        <span className="Header-optionLineOne">Hello,</span>
-        <span className="Header-optionLineTwo">Select your address</span>
+        <LocationOnIcon />
+        <HeaderOption>
+          <span className="Header-optionLineOne">Hello,</span>
+          <span className="Header-optionLineTwo">Select your address</span>
+        </HeaderOption>
       </HeaderOptionAddress>
+
       <HeaderSearch>
         <HeaderSearchInput type="text" />
         <HeaderSearchIconContainer>
@@ -72,12 +78,19 @@ const HeaderSearch = styled.div`
   height: 40px;
   border-radius: 4px;
   overflow: hidden;
+  margin-left: 4px;
+  background-color: white;
+  :focus-within {
+      box-shadow 0 0 0 3px #F90;
+  }
+
 `;
 
 const HeaderSearchInput = styled.input`
   flex-grow: 1;
+  border: 0;
   :focus {
-      border: none;
+    border: none;
   }
 `;
 const HeaderSearchIconContainer = styled.div`
@@ -98,5 +111,11 @@ const HeaderOption = styled.div`
   padding: 10px 9px 10px 9px;
 `;
 
-const HeaderOptionCart = styled.div``;
-const CartCount = styled.div``;
+const HeaderOptionCart = styled.div`
+  display: flex;
+  align-items: center;
+  padding-right: 9px;
+`;
+const CartCount = styled.div`
+  padding-left: 4px;
+`;
