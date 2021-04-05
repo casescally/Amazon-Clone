@@ -4,7 +4,7 @@ import styled from "styled-components";
 function Product() {
   return (
     <Container>
-      <Title>iPad Pro</Title>
+      <Title>Apple iPAD 8th Gen, 10.2 inch, WiFi, 32GB, Space Gray</Title>
       <Price>$1449</Price>
       <Rating>⭐⭐⭐⭐⭐</Rating>
       <Image src="https://images-na.ssl-images-amazon.com/images/I/81SGb5l%2blZL._AC_SX342_.jpg" />
