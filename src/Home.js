@@ -11,15 +11,31 @@ function Home() {
     db.collection("products").onSnapshot((snapshot) => {
       let tempProducts = [];
 
-      tempProducts = snapshot.docs.map((doc) => doc.data());
-      console.log(tempProducts);
+      tempProducts = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        product: doc.data(),
+      }));
+      setProducts(tempProducts);
     });
   };
-  getProducts();
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  console.log(products);
   return (
     <Container>
       <Banner></Banner>
       <Content>
+        {products.map((data) => (
+          <Product title={data.product.name} 
+                    price={data.product.price}
+                    rating={data.product.rating}
+                    image={data.product.image}
+                    />
+        ))
+      }
         <Product />
         <Product />
       </Content>
