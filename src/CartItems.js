@@ -3,7 +3,6 @@ import styled from "styled-components";
 import CartItem from "./CartItem";
 
 function CartItems({ cartItems }) {
-
   return (
     <Container>
       <Title>Shopping Cart</Title>
@@ -20,7 +19,6 @@ function CartItems({ cartItems }) {
 export default CartItems;
 
 const Container = styled.div`
-  height: 300px;
   flex: 0.8;
   padding: 20px;
   margin-right: 18px;
@@ -29,4 +27,6 @@ const Container = styled.div`
 
 const ItemsContainer = styled.div``;
 
-const Title = styled.h1``;
+const Title = styled.h1`
+  margin-bottom: 8px;
+`;

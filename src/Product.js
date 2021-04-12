@@ -1,8 +1,27 @@
 import { PinDropSharp } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
+import { db } from "./firebase";
 
-function Product({title, price, rating, image, id}) {
+function Product({ title, price, rating, image, id }) {
+  const addToCart = () => {
+    const cartItem = db.collection("cartItems").doc(id);
+    cartItem.get().then((doc) => {
+      if (doc.exists) {
+        cartItem.update({
+          quantity: doc.data().quantity + 1,
+        });
+      } else {
+        db.collection("cartItems").doc(id).set({
+          name: title,
+          image: image,
+          price: price,
+          quantity: 1,
+        });
+      }
+    });
+  };
+
   return (
     <Container>
       <Title>{title}</Title>
@@ -16,7 +35,7 @@ function Product({title, price, rating, image, id}) {
       </Rating>
       <Image src={image} />
       <ActionSection>
-        <AddToCartButton>Add to Cart</AddToCartButton>
+        <AddToCartButton onClick={addToCart}>Add to Cart</AddToCartButton>
       </ActionSection>
     </Container>
   );
@@ -54,6 +73,7 @@ const AddToCartButton = styled.button`
   background-color: #f0c14b;
   border: 2px solid #a88734;
   border-radius: 2px;
+  cursor: pointer;
 `;
 
 const ActionSection = styled.div`
