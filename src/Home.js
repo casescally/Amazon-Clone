@@ -29,13 +29,14 @@ function Home() {
       <Banner></Banner>
       <Content>
         {products.map((data) => (
-          <Product title={data.product.name} 
-                    price={data.product.price}
-                    rating={data.product.rating}
-                    image={data.product.image}
-                    />
-        ))
-      }
+          <Product
+            title={data.product.name}
+            price={data.product.price}
+            rating={data.product.rating}
+            image={data.product.image}
+            id={data.id}
+          />
+        ))}
         <Product />
         <Product />
       </Content>

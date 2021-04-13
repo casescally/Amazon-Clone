@@ -5,7 +5,7 @@ const CartItem = ({ id, item }) => {
   let options = [];
 
   for (let i = 1; i < Math.max(item.quantity + 1, 20); i++) {
-    options.push(<option value={i}> Qty: {1}</option>);
+    options.push(<option value={i}> Qty: {i}</option>);
   }
 
   return (
@@ -19,8 +19,7 @@ const CartItem = ({ id, item }) => {
         </CartItemInfoTop>
         <CartItemInfoBottom>
           <CartItemQuantityContainer>
-            <select></select>
-            {item.quantity}
+            <select value={item.quantity}>{options}</select>
           </CartItemQuantityContainer>
           <CartItemDeleteContainer>Delete</CartItemDeleteContainer>
         </CartItemInfoBottom>
@@ -64,8 +63,19 @@ const CartItemInfoTop = styled.div`
 const CartItemInfoBottom = styled.div`
   display: flex;
   margin-top: 4px;
+  align-items: center;
 `;
-const CartItemQuantityContainer = styled.div``;
+const CartItemQuantityContainer = styled.div`
+  select {
+    border-radius: 7px;
+    background-color: #f0f2f2;
+    padding: 8px;
+    box-shadow: 0 2px 5px rgba(15, 17, 17, 0.15);
+    :focus {
+      outline: none;
+    }
+  }
+`;
 
 const CartItemDeleteContainer = styled.div`
   color: #007185;
