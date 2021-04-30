@@ -5,7 +5,7 @@ import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import { Link } from "react-router-dom";
 
-function Header({ cartItems }) {
+function Header({ user, cartItems }) {
   const getCount = () => {
     let count = 0;
     //loop through all cart items
@@ -28,7 +28,7 @@ function Header({ cartItems }) {
       <HeaderOptionAddress>
         <LocationOnIcon />
         <HeaderOption>
-          <span className="Header-optionLineOne">Hello,</span>
+          <span className="Header-optionLineOne">Hello, {user.name}</span>
           <span className="Header-optionLineTwo">Select your address</span>
         </HeaderOption>
       </HeaderOptionAddress>
